@@ -1,0 +1,79 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.body {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fae078;
+}
+
+.joong {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.sexy {
+    font-size: 30px;
+}
+
+.rex {
+    cursor: pointer;
+}
+
+.box {
+    width: 400px;
+    height: 350px;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px 5px rgb(129, 122, 54);
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.box>h2 {
+    font-size: 24px;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.asd>input {
+    width: 100%;
+    height: 48px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    background-color: #f4f4f4;
+}
+
+.diaWl {
+    width: 100%;
+    height: 48px;
+    padding: 0 10px;
+    margin-top: 20px;
+    border-radius: 6px;
+    background-color: #0099ff;
+    color: #fff;
+    font-size: 17px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.diaWl:hover {
+    background-color: #0084dc;
+}
