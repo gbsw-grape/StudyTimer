@@ -1,35 +1,6 @@
-.header {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #ece9e9;
-}
-
-.header>h1 {
-    font-size: 20px;
-}
-
-.signTable {
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.sign {
-    text-decoration: none;
-    color: #000;
-}
-
-.sign:hover {
-    color: #f5cc2b;
-}
-
 .stopwatch {
     width: 100%;
-    height: 700px;
+    height: 800px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,16 +27,32 @@
     color: #fff;
     flex-shrink: 0;
     cursor: pointer;
+
 }
 
-#start {
+.start {
     background-color: #07BC03;
+    transition: background-color 0.3s ease;
 }
 
-#stop {
+.start:hover {
+    background-color: #06ca02;
+}
+
+.stop {
     background-color: #EC6A6A;
+    transition: background-color 0.3s ease;
 }
 
-#reset {
-    background-color: #e9d06e;
+.stop:hover {
+    background-color: #e44848;
+}
+
+.reset {
+    background-color: #dbb109;
+    transition: background-color 0.3s ease;
+}
+
+.reset:hover {
+    background-color: #dfc14c;
 }

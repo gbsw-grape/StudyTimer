@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './Timer.module.css';
+import Header from './header/Header';
 
 const Timer: React.FC = () => {
     const [time, setTime] = useState<number>(0);
-    const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
     const [isActive, setIsActive] = useState<boolean>(false);
 
     const getTimeFormatString = (time: number) => {
@@ -15,55 +14,36 @@ const Timer: React.FC = () => {
     };
 
     useEffect(() => {
+        let interval: NodeJS.Timeout | null = null;
+
         if (isActive) {
-            setTimerId(
-                setTimeout(() => {
-                    setTime((prevTime) => prevTime + 1);
-                }, 1000)
-            );
-        } else if (!isActive && timerId) {
-            clearTimeout(timerId);
-            setTimerId(null);
+            interval = setInterval(() => {
+                setTime((prevTime) => prevTime + 1);
+            }, 1000);
+        } else if (!isActive && time !== 0) {
+            clearInterval(interval!);
         }
+
+        return () => clearInterval(interval!);
     }, [isActive, time]);
 
-    const startClock = () => {
-        setIsActive(true);
-    };
-
-    const stopClock = () => {
-        setIsActive(false);
-        if (timerId) {
-            clearTimeout(timerId);
-            setTimerId(null);
-        }
-    };
-
+    const startClock = () => setIsActive(true);
+    const stopClock = () => setIsActive(false);
     const resetClock = () => {
-        stopClock();
+        setIsActive(false);
         setTime(0);
     };
 
     return (
         <>
-            <div className={styles.header}>
-                <h1>StudyTimer</h1>
-                <div className={styles.signTable}>
-                    <Link to="/signUp" className={styles.sign}>
-                        회원가입
-                    </Link>
-                    <Link to="/signIn" className={styles.sign}>
-                        로그인
-                    </Link>
-                </div>
-            </div>
+            <Header />
             <div className={styles.stopwatch}>
                 <div>
                     <h1 className={styles.time}>{getTimeFormatString(time)}</h1>
                     <div className={styles.timeBtn}>
-                        <button onClick={startClock} className={styles.btn} id={styles.start}>Start</button>
-                        <button onClick={stopClock} className={styles.btn} id={styles.stop}>Stop</button>
-                        <button onClick={resetClock} className={styles.btn} id={styles.reset}>Reset</button>
+                        <button onClick={startClock} className={`${styles.btn} ${styles.start}`}>Start</button>
+                        <button onClick={stopClock} className={`${styles.btn} ${styles.stop}`}>Stop</button>
+                        <button onClick={resetClock} className={`${styles.btn} ${styles.reset}`}>Reset</button>
                     </div>
                 </div>
             </div>
